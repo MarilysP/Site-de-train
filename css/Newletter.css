@@ -1,0 +1,80 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poltawski+Nowy&display=swap');
+repeat scroll 0 0 rgba(0, 0, 0, 0);
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    
+}
+
+body{
+    background: linear-gradient(135deg,#000000,#5A1CE1,#000000,#5A1CE1 );
+    height: 100vh;
+    background-size: 300% 300%;
+    animation: color 12s ease-in-out infinite;
+
+}
+@keyframes color {
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    } 
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
+
+.mid-page{
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: antiquewhite;
+    justify-content: center;
+    
+}
+
+.mid-page h1 h2{
+    font-family: Poltawski Nowy;
+}
+.mid-page p{
+   padding-top: 10px;
+   border-top: 1px solid white;
+   width: 600px;
+   text-align: justify;
+   color: antiquewhite;
+   margin-top: 50px;
+   font-family: Playfair Display;
+}
+
+
+
+.mailinput{
+    padding:10px;
+    border-radius: 30px;
+    font-family: Poltawski Nowy;
+    border: none;
+}
+.inscription button{
+    margin-top: 50px;
+    background:linear-gradient(45deg,#4c00ff,#cd04f5) ;
+    padding: 10px;
+    border-radius: 30px;
+    color:antiquewhite;
+    font-family: poltawski nowy;
+    border: none;
+    margin-left: 10px;
+}
+
+.inscription button a{
+    text-decoration: none;
+    color:antiquewhite;
+    font-family: poltawski nowy;
+}
+
