@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="../images/icone.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');</style>
-    <link rel="stylesheet" href="../css/panier.css">
+    <link rel="stylesheet" href="../css/compte.css">
     <script src="../js/paniersimple.js" defer></script>
    
 </head>
@@ -21,13 +21,36 @@
             <ul>
                 <li> <a href="voyagez.html">Voyagez</a></li>
                 <li> <a href="Offres.html">Offres</a></li>
-                <li> Contacts</li>
+              
             </ul>
         </nav>
        </header>
 
        <div class="mid-page">
+            <div class="formlog">
+                <p> Créer mon compte : </p>
+            
+                    <form  method="post">
+                        <input type="email" id="emaillog" name="emaillog" placeholder="  Votre email" required><br><br>
+                        <input type="password" id="mot_de_passelog" name="mot_de_passelog" placeholder="  Votre mot de passe" required><br><br>                
+                        <input type="submit"  name="formsendlogin" id="formloging" value="Valider">
+                    </form>
+            </div>
+                 
 
+        <div class="form">
+
+            <p>  Me connecter : </p>
+            
+                <form  method="post">
+                    <input type="text" id="prenom" name="prenom" placeholder="  Votre prénom" required><br><br>
+                    <input type="text" id="nom" name="nom" placeholder="  Votre nom" required><br><br>
+                    <input type="email" id="email" name="email" placeholder="  Votre email" required><br><br>
+                    <input type="password" id="mot_de_passe" name="mot_de_passe" placeholder="  Votre mot de passe" required><br><br>
+                    <input type="password" id="cmot_de_passe" name="cmot_de_passe" placeholder="  Confirmation du mot de passe" required><br><br>                    
+                    <input type="submit"  name="formsend" id="formsend" value="Valider">
+                </form>
+            </div>
     
 
 
