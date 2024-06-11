@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poltawski+Nowy&display=swap');
+repeat scroll 0 0 rgba(0, 0, 0, 0);
 
 
 
@@ -52,6 +53,10 @@ section.title{
     color: #000000;
 }
 
+section.title a {
+    text-decoration: none;
+    color: #000000;
+}
 
 nav{
     margin-right: 100px;
@@ -85,26 +90,6 @@ nav ul li {
     margin-right: 10px;
 }
 
-nav ul li.licompte {
-    color: white;
-    font-family: Poltawski Nowy;
-    letter-spacing: 5px;
-    font-size: 1.1em;
-    width: 700px;
-    height: 40px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: linear-gradient(45deg,#000000,#5A1CE1);
-    border-radius: 30px;
-    position : relative;
-    overflow: hidden;
-    z-index: 0;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-
 nav ul li::before{
     position:absolute;
     content:'';
@@ -128,50 +113,42 @@ nav ul li a {
     color: white;
 }
 
-section.mid-page{
-    margin-top: 100px;
-    display:flex;
-    justify-content: space-around;
-    width: 100%;
+.pagename{
+    font-family: Poltawski Nowy;
+    margin-left: 100px;
+    margin-right: 100px;
+    color: antiquewhite;
+    border-bottom: 2px solid antiquewhite;
 }
 
-section.mid-page img {
-    border-radius: 30px;
-}
-section.card {
-    width: 400px;
-    height: 444px;
+
+.mid-page{
     display: flex;
-    align-items: center;
-    flex-direction: column;
     justify-content: center;
-    font-family: Playfair Display;
 }
 
-section.card h1 {
-    color: #dee0f7;
-    font-size: 2em;
-    border-left:  1px solid white;
-    padding-left: 20px;
+.recapitulatif{
+margin-top: 100px;
+width: 400px;
+height: 500px;
+border-radius: 30px;
+background-color: #ffffff;
+font-family: Poltawski Nowy;
+list-style-type: none;
+padding:50px
 }
 
-section.card h1 span{
-    font-size: 0.4em;
+.recapitulatif h1 {
+    border-bottom: 1px solid black;
 }
 
-section.card button {
-    background:linear-gradient(45deg,#4c00ff,#cd04f5) ;
-    padding: 10px;
-    border-radius: 30px;
-    color:antiquewhite;
-    font-family: poltawski nowy;
-    border: none;
-}
-.card a {
-    text-decoration: none;
-    color:antiquewhite;
-    font-family: poltawski nowy;
-}
+
+
+
+
+
+
+
 
 .page-bottom{
   
@@ -238,11 +215,9 @@ div.up-footer{
     flex-direction: column;
     align-items: center;
     padding-bottom: 100px;
-    
 }
 
 .low-footer button{
-    margin-top: 10px;
     width: 100px;
     padding:20px;
     border-radius: 40px;
@@ -251,7 +226,42 @@ div.up-footer{
     border: none;
    
 }
+
 .low-footer a {
     text-decoration: none;
     color: #000000;
 }
+
+.choixHoraire{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center ;
+}
+
+.card{
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(45deg,#aaaaaa,#140041);
+    border-radius: 15px;
+    height: 70px;
+    width: 500px;
+    font-family: poltawski nowy;
+    font-size: 1,5em;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 30px;
+    color: antiquewhite;
+}
+
+.selectedtrain {
+    background: linear-gradient(45deg,#140041,#aaaaaa);
+
+  }
+
+  .selectedtrain p {
+    
+    border-bottom: 1px solid antiquewhite;
+  }

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,18 +21,41 @@
     </section>
     <nav>
         <ul>
-            <li> <a href="../html/voyagez.html">Voyagez</a></li>
-            <li> <a href="../html/Offres.html">Offres</a></li>
-            <li> <a href="../html/compte.html">Compte</a> </li>
+            <li class="li"><a href="/html/voyagez.html">Voyagez</a></li>
+            <li class="li"><a href="/html/Offres.html">Offres</a></li>
+
+            <?php
+                include '../include/database.php';
+                include '../include/signin.php';
+                include '../include/login.php';
+                global $db;
+                if (isset($_SESSION['prenom'])) {
+                    ?>
+                    <li class="licompte">
+                        <p>Compte de : <?php echo $_SESSION['prenom']; ?></p>
+                        <a href="/include/logout.php">Déconnexion</a>
+                    </li>
+                    <?php
+                }else{
+                    ?>
+                        <li><a href="/html/compte.php">Compte</a></li>
+                    <?php
+                }
+            ?>
+            
+            
         </ul>
+        
     </nav>
    </header>
+   
+
    <section class="mid-page">
     <section class="card">
             <h1> Toutes les destinations, au même <span>prix</span> !</h1>
-            <button><a href="../html/voyagez.html">Réservez vos billets de train.</a></button>
+            <button><a href="/html/voyagez.html">Réservez vos billets de train.</a></button>
     </section>
-    <img src="../images/famille train acceuil.png" alt="Image de train">
+    <img src="/images/famille train acceuil.png" alt="Image de train">
    </section>
    <div class="page-bottom">
         <div class="up-footer">
@@ -68,7 +95,7 @@
         </div>
         <div class="low-footer">
             <h1>Inscrivez-vous à notre newsletter et profitez des meilleurs bons plans : </h1>
-            <a href="../html/Newletter.html" target="_blank"><button><i class="fa-solid fa-paper-plane"></i></button></a> 
+            <a href="/html/Newletter.html" target="_blank"><button><i class="fa-solid fa-paper-plane"></i></button></a> 
         </div>
    </div>
 </body>

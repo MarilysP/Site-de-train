@@ -161,7 +161,7 @@ nav ul li a {
     height: 35px;
 }
 
-.form  #formsend, .formlog  #formloging{
+ .formlog  #formlogin{
     height: 35px;
     border-radius: 15px;
     font-family: Poltawski Nowy;
@@ -169,6 +169,14 @@ nav ul li a {
     width:250px;
 }
 
+.form  #formsending{
+    height: 35px;
+    border-radius: 15px;
+    font-family: Poltawski Nowy;
+    border: none;
+    width:250px;
+}
+  
 
 
 

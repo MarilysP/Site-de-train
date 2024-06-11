@@ -1,20 +1,28 @@
+<?php
+session_start();
+if (isset($_SESSION['prenom'])) {
+    header('Location: ../html/index.php'); // Rediriger vers la page d'accueil après déconnexion
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loco Motiv' - Panier</title>
-    <link rel="stylesheet" href="../css/panier.css">
-    <link rel="stylesheet" href="../css/compte.css">
-    <link rel="shortcut icon" href="../images/icone.png" type="image/x-icon">
+    
+    <link rel="stylesheet" href="/css/compte.css">
+    <link rel="shortcut icon" href="/images/icone.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');</style>
-    <script src="../js/paniersimple.js" defer></script>
+    <script src="/js/paniersimple.js" defer></script>
 </head>
 <body>
     <header>
         <section class="title">
-            <p><a href="main.html">Loco Motiv'</a></p>
+            <p><a href="index.php">Loco Motiv'</a></p>
         </section>
         <nav>
             <ul>
@@ -24,35 +32,23 @@
         </nav>
     </header>
 
+    <?php 
+        include '../include/database.php';
+        global $db;
+    ?>
+
     <div class="mid-page">
     <div class="formlog">
-            <p>Créer mon compte :</p>
+            <p>Me connecter :</p>
             <form method="post" action="">
                 <input type="email" id="emaillog" name="emaillog" placeholder="Votre email" required><br><br>
                 <input type="password" id="mot_de_passelog" name="mot_de_passelog" placeholder="Votre mot de passe" required><br><br>
                 <input type="submit" name="formlogin"  id="formlogin" value="Se connecter">
             </form>
-        </div>
-
-        <?php
-        if (isset($_POST['formlogin'])) {
-            extract($_POST);
-            if (!empty($emaillog) && !empty($mot_de_passelog)) {
-                include '../include/database.php';
-                global $db;
-                $q = $db->prepare("SELECT * FROM utilisateur WHERE email = :email");
-                $q->execute(['email' => htmlspecialchars($emaillog)]);
-                $result = $q->fetch();
-                if ($result) {
-                    echo "Le compte existe bien.";
-                } else {
-                    echo "Le compte portant l'email " . htmlspecialchars($emaillog) . " n'existe pas.";
-                }
-            } else {
-                echo "Veuillez compléter l'ensemble des champs."; 
-            }
-        }
-        ?>
+            <p><?php include '../include/login.php';?> </p>
+    </div>
+   
+    
 
         <div class="form">
             <p>Formulaire d'inscription</p>
@@ -62,47 +58,12 @@
                 <input type="email" id="email" name="email" placeholder="Votre email" required><br><br>
                 <input type="password" id="mot_de_passe" name="mot_de_passe" placeholder="Votre mot de passe" required><br><br>
                 <input type="password" id="cmot_de_passe" name="cmot_de_passe" placeholder="Confirmation du mot de passe" required><br><br>
-                <input type="submit" name="formsend"  id=" formsend" value="Valider">
+                <input type="submit" name="formsend"  id= "formsending" value="Valider">
             </form>
+            <p> <?php include '../include/signin.php';?></p>
         </div>
-
-        <?php
-        if (isset($_POST['formsend'])) {
-            extract($_POST);
-            if (!empty($mot_de_passe) && !empty($cmot_de_passe) && !empty($email) && !empty($prenom) && !empty($nom)) {
-                if ($mot_de_passe == $cmot_de_passe) {
-                    $options = ['cost' => 12];
-                    $hashpass = password_hash($mot_de_passe, PASSWORD_BCRYPT, $options);
-
-                    include '../include/database.php';
-                    global $db;
-
-                    // Vérifier si l'email existe déjà
-                    $c = $db->prepare("SELECT email FROM utilisateur WHERE email = :email");
-                    $c->execute(['email' => htmlspecialchars($email)]);
-                    $result = $c->rowCount();
-
-                    if ($result == 0) {
-                        // Insérer le nouvel utilisateur
-                        $q = $db->prepare("INSERT INTO utilisateur (email, mot_de_passe, prenom, nom) VALUES (:email, :mot_de_passe, :prenom, :nom)");
-                        $q->execute([
-                            'email' => htmlspecialchars($email),
-                            'mot_de_passe' => $hashpass,
-                            'prenom' => htmlspecialchars($prenom),
-                            'nom' => htmlspecialchars($nom)
-                        ]);
-                        echo "Le compte a été créé.";
-                    } else {
-                        echo "Cet email est déjà utilisé.";
-                    }
-                } else {
-                    echo "Les mots de passe ne correspondent pas.";
-                }
-            } else {
-                echo "Tous les champs doivent être remplis.";
-            }
-        }
-        ?>
+       
+      
     </div>
 
     <div class="page-bottom">
@@ -141,7 +102,7 @@
         </div>
         <div class="low-footer">
             <h1>Inscrivez-vous à notre newsletter et profitez des meilleurs bons plans :</h1>
-            <a href="../html/Newletter.html" target="_blank"><button><i class="fa-solid fa-paper-plane"></i></button></a>
+            <a href="/html/Newletter.html" target="_blank"><button><i class="fa-solid fa-paper-plane"></i></button></a>
         </div>
     </div>
 </body>
